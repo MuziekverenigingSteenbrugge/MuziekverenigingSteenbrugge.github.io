@@ -302,7 +302,7 @@ word-wrap: break-word;
 /* //
 // mobile
 // */
-@media screen and (max-width: 500px){
+@media screen and (max-width: 200px){
 /* // algemeen */
 body {
     font-size: 200%;
