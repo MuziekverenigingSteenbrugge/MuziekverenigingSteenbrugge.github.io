@@ -242,7 +242,8 @@ function loggedIn() {
 
     fetch(scriptURL + '?par=getSpreadsheetData&email=' + email)
     .then(response => response.json())
-    .then(data => {      // events halen uit spreadsheet
+    .then(scriptdata => {      // events halen uit spreadsheet
+        data = scriptdata;
         if(data.events.length == 0 && data.userData.length == 0){
             document.getElementById("loadingText").style.display = "none";
             alert("Dit email zit nog niet in de lijst.\n->Als dit een nieuw account is zal je meoeten wachten op de secretaris\n->als dit een oud account is heb je waarschijnlijk een fout email, gelieve in te loggen met het juiste email");
