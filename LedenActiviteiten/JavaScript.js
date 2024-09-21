@@ -593,7 +593,7 @@ document.getElementById('editButton').addEventListener('click', function() {
         const radioButtons = document.querySelectorAll('input[type="radio"]');
         var cntr = 0;
         radioButtons.forEach(radio => {
-            while(data.disabledEvents[Math.trunc(cntr/5)]) {
+            while(data.disabledEvents[Math.trunc(cntr/5)] && !document.getElementById("toonAllesInput").checked) {
                 cntr = cntr+5;
             }
             
