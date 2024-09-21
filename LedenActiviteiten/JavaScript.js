@@ -580,25 +580,29 @@ document.getElementById("toonAllesInput").addEventListener('change', function() 
 //
 // Wijzig knop 
 //
-let bulletsEnabled = false;
+let bulletsDisabled = true;
 document.getElementById('editButton').addEventListener('click', function() {
     if(data.userData != undefined){
-        const radioButtons = document.querySelectorAll('input[type="radio"]');
-        var cntr = 0;
-        radioButtons.forEach(radio => {
-            if(!radio.checked && data.userData[Math.trunc(cntr/5)] != "-" && data.disabledEvents[Math.trunc(cntr/5)]){
-                radio.disabled = bulletsEnabled;
-            }
-
-            cntr++;
-        });
-
-        if(!bulletsEnabled){
+        bulletsDisabled = !bulletsDisabled;
+        if(bulletsDisabled){
             document.getElementById('editButton').innerHTML = "Stop wijzigen"
         } else {
             document.getElementById('editButton').innerHTML = "Wijzigen"
         }
-        bulletsEnabled = !bulletsEnabled;
+        
+        const radioButtons = document.querySelectorAll('input[type="radio"]');
+        var cntr = 0;
+        radioButtons.forEach(radio => {
+            while(data.disabledEvents[Math.trunc(cntr/5)]) {
+                cntr = cntr+5;
+            }
+            
+            if(!radio.checked && data.userData[Math.trunc(cntr/5)] != "-" && !data.disabledEvents[Math.trunc(cntr/5)]){
+                radio.disabled = bulletsDisabled;
+            }
+
+            cntr++;
+        });
     }
 });
 
