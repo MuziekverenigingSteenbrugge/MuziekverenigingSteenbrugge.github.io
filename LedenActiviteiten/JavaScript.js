@@ -572,6 +572,8 @@ if (e.code === "ArrowRight"){
 // toonAlles_checkbox
 //
 document.getElementById("toonAllesInput").addEventListener('change', function() {
+    bulletsDisabled = true;
+    document.getElementById('editButton').innerHTML = "Wijzigen"    
     updateEvents(data);
 })
 
@@ -584,7 +586,7 @@ let bulletsDisabled = true;
 document.getElementById('editButton').addEventListener('click', function() {
     if(data.userData != undefined){
         bulletsDisabled = !bulletsDisabled;
-        if(bulletsDisabled){
+        if(!bulletsDisabled){
             document.getElementById('editButton').innerHTML = "Stop wijzigen"
         } else {
             document.getElementById('editButton').innerHTML = "Wijzigen"
