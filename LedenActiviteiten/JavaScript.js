@@ -642,3 +642,23 @@ if(data != null && data != "null"){
 //
 url = scriptURL;
 document.getElementById("logOutButton").style.display = "inline";
+
+
+
+//
+// choose events using url
+//
+// use: page.html?event=<event_id>
+let URLevent = decodeURIComponent(window.location.href.split("event=")[1]);
+const containers = document.getElementsByClassName("container");
+for(let i=0;i<containers.length; i++){
+    let containerID = containers[i].id.split("info_")[1];
+    if(containerID != undefined) {
+        containerID = containerID.replaceAll("<br>", " ");
+        if(containerID == URLevent){
+            containers[i].style.display = "grid";
+            containers[0].style.display = "none";
+            break;
+        }
+    }
+}
