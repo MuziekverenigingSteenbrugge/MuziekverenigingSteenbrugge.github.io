@@ -108,7 +108,7 @@ if(!send){
     var email = document.getElementById("emailInput").value;
 
     if(email != ""){
-    alert('Reset password email send');
+    alert('U ontvangt zo dadelijk een e-mail waarmee u uw wachtwoord opnieuw kunt instellen. Gelieve ook uw spam- of ongewenste e-mail te controleren indien u de mail niet meteen terugvindt.');
     sendPasswordEmail(email);
 
     document.getElementById("register").style.display = "block";
@@ -181,7 +181,7 @@ if(!makeAccount){
         })
         .catch(error => console.error('Error:', error));
         
-        alert("Account gemaakt, er is een mail verzonden om uw password aan te passen");
+        alert("Uw account is succesvol aangemaakt. U ontvangt zo dadelijk een e-mail waarmee u uw wachtwoord kunt instellen. Gelieve ook uw spam- of ongewenste e-mail te controleren indien u de mail niet meteen terugvindt.");
         sendPasswordEmail(email);
     }
     })
