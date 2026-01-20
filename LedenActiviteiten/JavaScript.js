@@ -511,7 +511,7 @@ document.getElementById("logOutButton").addEventListener('click', function() {
     localStorage.removeItem("infoAanwezighedenSteenbrugge");
     localStorage.removeItem("dataAanwezighedenSteenbrugge");
 
-    window.open(url, '_top');
+    window.open(window.location.href, '_top');
 })
 
 //
