@@ -50,11 +50,15 @@ font-size: 1em;
 }
 
 button:hover {
-background-color: #FFD700;
+background-color: #FFAC00;
 }
 
 button:disabled {
 background-color: grey;
+}
+
+button.disabled {
+    background-color: grey;
 }
 
 
@@ -373,3 +377,4 @@ height: 50px;
     margin-top: 12%;
 }
 }
+
