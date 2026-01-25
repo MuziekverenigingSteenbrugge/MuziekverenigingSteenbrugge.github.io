@@ -254,10 +254,9 @@ function loggedIn() {
             document.getElementById("editButton").style.display = "block";
             document.getElementById("loadingText").style.display = "none";
 
-            if(data.readOnly){
-                document.getElementById("editButton").disabled = true;
-                document.getElementById("editButton").innerHTML = "Wijzigen uitgeschakeld";
-            }
+            // if(data.readOnly){
+                // document.getElementById("editButton").disabled = true;
+            // }
         }
     })
     .catch(error => console.error('Error:', error));
@@ -586,27 +585,31 @@ document.getElementById("toonAllesInput").addEventListener('change', function() 
 let bulletsDisabled = true;
 document.getElementById('editButton').addEventListener('click', function() {
     if(data.userData != undefined){
-        bulletsDisabled = !bulletsDisabled;
-        if(!bulletsDisabled){
-            document.getElementById('editButton').innerHTML = "Stop wijzigen"
-        } else {
-            document.getElementById('editButton').innerHTML = "Wijzigen"
-        }
-        
-        const radioButtons = document.querySelectorAll('input[type="radio"]');
-        var cntr = 0;
-        radioButtons.forEach(radio => {
-            while(data.disabledEvents[Math.trunc(cntr/5)] && !document.getElementById("toonAllesInput").checked) {
-                cntr = cntr+5;
+        if(!data.readOnly) {
+            bulletsDisabled = !bulletsDisabled;
+            if(!bulletsDisabled){
+                document.getElementById('editButton').innerHTML = "Stop wijzigen"
+            } else {
+                document.getElementById('editButton').innerHTML = "Wijzigen"
             }
             
-            if(!radio.checked && data.userData[Math.trunc(cntr/5)] != "-" && !data.disabledEvents[Math.trunc(cntr/5)]){
-                radio.disabled = bulletsDisabled;
-            }
-
-            cntr++;
-        });
-    }
+            const radioButtons = document.querySelectorAll('input[type="radio"]');
+            var cntr = 0;
+            radioButtons.forEach(radio => {
+                while(data.disabledEvents[Math.trunc(cntr/5)] && !document.getElementById("toonAllesInput").checked) {
+                    cntr = cntr+5;
+                }
+                
+                if(!radio.checked && data.userData[Math.trunc(cntr/5)] != "-" && !data.disabledEvents[Math.trunc(cntr/5)]){
+                    radio.disabled = bulletsDisabled;
+                }
+    
+                cntr++;
+            });
+        } else {
+            alert("Wijzigen is uitgeschakeld door de secretaris.");
+      }
+    } 
 });
 
 
