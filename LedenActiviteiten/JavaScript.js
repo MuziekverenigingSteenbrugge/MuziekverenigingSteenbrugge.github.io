@@ -254,9 +254,10 @@ function loggedIn() {
             document.getElementById("editButton").style.display = "block";
             document.getElementById("loadingText").style.display = "none";
 
-            // if(data.readOnly){
+            if(data.readOnly){
                 // document.getElementById("editButton").disabled = true;
-            // }
+                document.getElementById("editButton").classList.add("disabled");
+            }
         }
     })
     .catch(error => console.error('Error:', error));
