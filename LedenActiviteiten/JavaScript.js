@@ -256,6 +256,7 @@ function loggedIn() {
 
             if(data.readOnly){
                 document.getElementById("editButton").disabled = true;
+                document.getElementById("editButton").innerHTML = "Wijzigen uitgeschakeld";
             }
         }
     })
