@@ -93,36 +93,35 @@ signInWithEmailAndPassword(auth, email, password).then(u => {
 //
 var send = false;
 document.getElementById('forgotPassword').addEventListener('click', function(event) {
-event.preventDefault();
-
-if(!send){
-    document.getElementById("register").style.display = "none";
-    document.getElementById("passwordLabel").style.display = "none";
-    document.getElementById("passwordInput").style.display = "none";
-    document.getElementById("inlogButton").style.display = "none";
-    document.getElementById("loginBackButton").style.display = "block";
-    document.getElementById("forgotPassword").innerHTML = "Verzend email";
-    document.getElementById("loginTitle").innerHTML = "<br><br>Paswoord vergeten";
-    send = true;
-}else{
-    var email = document.getElementById("emailInput").value;
-
-    if(email != ""){
-    alert('U ontvangt zo dadelijk een e-mail waarmee u uw wachtwoord opnieuw kunt instellen. Gelieve ook uw spam- of ongewenste e-mail te controleren indien u de mail niet meteen terugvindt.');
-    sendPasswordEmail(email);
-
-    document.getElementById("register").style.display = "block";
-    document.getElementById("passwordLabel").style.display = "block";
-    document.getElementById("passwordInput").style.display = "block";
-    document.getElementById("inlogButton").style.display = "block";
-    document.getElementById("loginBackButton").style.display = "none";
-    document.getElementById("forgotPassword").innerHTML = "Paswoord vergeten";
-    document.getElementById("loginTitle").innerHTML = "Steenbrugge<br>Activiteiten<br>Log in";
-    send = false;
-    } else {
-    alert("Geef een email adres in")
+    event.preventDefault();
+    
+    if(!send){
+        document.getElementById("register").style.display = "none";
+        document.getElementById("passwordLabel").style.display = "none";
+        document.getElementById("passwordInput").style.display = "none";
+        document.getElementById("inlogButton").style.display = "none";
+        document.getElementById("loginBackButton").style.display = "block";
+        document.getElementById("forgotPassword").innerHTML = "Verzend email";
+        document.getElementById("loginTitle").innerHTML = "<br><br>Paswoord vergeten";
+        send = true;
+    }else{
+        var email = document.getElementById("emailInput").value;
+    
+        if(email != ""){
+            sendPasswordEmail(email);
+        
+            document.getElementById("register").style.display = "block";
+            document.getElementById("passwordLabel").style.display = "block";
+            document.getElementById("passwordInput").style.display = "block";
+            document.getElementById("inlogButton").style.display = "block";
+            document.getElementById("loginBackButton").style.display = "none";
+            document.getElementById("forgotPassword").innerHTML = "Paswoord vergeten";
+            document.getElementById("loginTitle").innerHTML = "Steenbrugge<br>Activiteiten<br>Log in";
+            send = false;
+        } else {
+            alert("Geef een email adres in")
+        }
     }
-}
 });
 
 
@@ -208,10 +207,12 @@ function sendPasswordEmail(email) {
     sendPasswordResetEmail(auth, email)
     .then(() => {
         // Password reset email sent!
+        alert('U ontvangt zo dadelijk een e-mail waarmee u uw wachtwoord opnieuw kunt instellen. Gelieve ook uw spam- of ongewenste e-mail te controleren indien u de mail niet meteen terugvindt.');
     })
     .catch((error) => {
         var errorCode = error.code;
         var errorMessage = error.message;
+        alert('Er is een fout opgetreden ${errorCode}: ${errorMessage}');
     });
 }
 
